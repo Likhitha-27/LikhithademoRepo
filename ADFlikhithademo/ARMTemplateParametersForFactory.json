@@ -7,6 +7,39 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LS_ABS_connectionString": {
+			"value": ""
+		},
+		"LS_Sqlserver_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "azuresqldb123.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "azuresqlbd"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "Likhitha"
+		},
+		"LS_Sqlserver_properties_typeProperties_server": {
+			"value": "azuresqldb123.database.windows.net"
+		},
+		"LS_Sqlserver_properties_typeProperties_database": {
+			"value": "azuresqlbd"
+		},
+		"LS_Sqlserver_properties_typeProperties_userName": {
+			"value": "storagedemopadidhe"
 		}
 	}
 }
