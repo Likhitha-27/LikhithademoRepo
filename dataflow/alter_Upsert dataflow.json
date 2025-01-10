@@ -1,0 +1,68 @@
+{
+	"name": "alter_Upsert dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_sourceSql",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_Sinksql",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Department as string,",
+				"          Position as string,",
+				"          Salary as decimal(10,2),",
+				"          DateOfJoining as date,",
+				"          Email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 alterRow(upsertIf(equals(EmployeeID,EmployeeID))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Department as string,",
+				"          Position as string,",
+				"          Salary as decimal(10,2),",
+				"          DateOfJoining as date,",
+				"          Email as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}
